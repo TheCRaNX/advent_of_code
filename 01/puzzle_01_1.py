@@ -1,4 +1,5 @@
-calibration_document = open("/home/paddi/Documents/projekte/python projects/adven_of_code/01/calibration_document.txt", "r")
+link_to_calibration_document = "/home/paddi/Documents/projekte/python projects/adven_of_code/01/calibration_document.txt"
+calibration_document = open(link_to_calibration_document, "r")
 data = calibration_document.read()
 result = 0
 for line in data.split('\n'):

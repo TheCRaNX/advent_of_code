@@ -1,4 +1,4 @@
-from variable import *
+from variables import *
 calibration_document = open(link_to_calibration_document, "r")
 data = calibration_document.read()
 result = 0

@@ -17,5 +17,6 @@ for line in data.split('\n'):
             print(letter)
         if str(letter) == str(":"):
             break
-    start_index = sentence.find()
+    start_index = line.find("blue")
+    print(start_index - 2)
 calibration_document.close() 

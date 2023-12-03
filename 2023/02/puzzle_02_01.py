@@ -9,14 +9,25 @@ bag = {'red_cubes':12,'green_cubes':13,'blue_cubes':14}
 
 data = calibration_document.read()
 
+def get_ball_amount(p_word, p_color):
+    position_amount = p_word.find(p_color)
+
 
 for line in data.split('\n'):
     print(line)
     for letter in line:
         if letter.isnumeric():
-            print(letter)
+            #print(letter)
+            pass
         if str(letter) == str(":"):
             break
-    start_index = line.find("blue")
-    print(start_index - 2)
+
+    for word in line.split():
+        l_word = str(word).replace(',','')
+        print(l_word)
+            
+        
+    
+
+    #print(position_amount - 2)
 calibration_document.close() 

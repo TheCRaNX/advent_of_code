@@ -31,5 +31,5 @@ for i in range(0, race_time):
         result = result + 1
         
 print(result)
-print("Race time: " + race_time, "Record time: " + record_distance)
+print("Race time: " + str(race_time), "Record time: " + str(record_distance))
 print("Execution time: %s seconds ---" % (time.time() - start_time))

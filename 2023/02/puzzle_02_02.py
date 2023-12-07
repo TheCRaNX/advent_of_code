@@ -1,9 +1,10 @@
+from itertools import *
 import itertools
 import re
 from variables import *
 
 #VARIABLES#
-highest_number = 0
+lowest_number = 0
 game_count = 0
 cube_colors = ["red", "green", "blue"]
 bag = {'red':12,'green':13,'blue':14}
@@ -32,20 +33,21 @@ calibration_document = open(link_to_puzzle_input, "r")
 data = calibration_document.read()
 
 for line in data.split('\n'):
-    cache_highest_number = 0
+    cache_lowest_number = 0
     for word in line.split():
         for letter in line:
             if letter == ":":
                 f_round_start = 1
         if f_round_start == 1:
              if word.isnumeric():
-                  cache_highest_number = int(word)
-                  if highest_number < cache_highest_number:
-                       highest_number = cache_highest_number
+                  cache_lowest_number = int(word)
+                  if lowest_number < cache_lowest_number:
+                       lowest_number = cache_lowest_number
 
-longest_number = len(str(highest_number))
+longest_number = len(str(lowest_number))
 
 for line in data.split('\n'):
+    max_bag = []
     game_count = game_count + 1
     for letter in line:
         if letter.isnumeric():
@@ -54,46 +56,34 @@ for line in data.split('\n'):
             break
         
     pos_dict = get_ball_position(line, cube_colors)
-    highest_red_cube = 0
-    highest_green_cube = 0
-    highest_blue_cube = 0
+    red_cubes = []
+    green_cubes = []
+    blue_cubes = []
     for key, value in (
          itertools.chain.from_iterable( 
             [itertools.product((k, ), v) for k, v in pos_dict.items()])):
                 amount = key, create_substring(line, value, longest_number)
-                if key == "red":
-                    cache_highest_red_cube = int(amount[1])
-                    if highest_red_cube < cache_highest_red_cube:
-                         highest_red_cube = cache_highest_red_cube                 
+                if key == "red":                     
+                    red_cubes.append(int(amount[1]))         
                     
                 if key == "green":
-                    cache_highest_green_cube = int(amount[1])
-                    if highest_green_cube < cache_highest_green_cube:
-                         highest_green_cube = cache_highest_green_cube  
+                    green_cubes.append(int(amount[1])) 
 
-                if key == "blue":                  
-                    cache_highest_blue_cube = int(amount[1])
-                    if highest_blue_cube < cache_highest_blue_cube:
-                         highest_blue_cube = cache_highest_blue_cube    
-
-    yes = 0
+                if key == "blue":
+                    blue_cubes.append(int(amount[1]))    
     
-    if int(bag["red"]) >=  int(highest_red_cube):
-        yes = yes + 1
-
-    if int(bag["green"]) >=  int(highest_green_cube):
-        yes = yes + 1
-
-    if int(bag["blue"]) >=  int(highest_blue_cube):
-        yes = yes + 1
-
-    if yes == 3:
-        result = result + game_count
-
-    yes = 0
-    red_cubes = 0
-    green_cubes = 0
-    blue_cubes = 0
+    max_bag.append(max(red_cubes))
+    max_bag.append(max(green_cubes))
+    max_bag.append(max(blue_cubes))
     
+    cache_result = 1
+    red_cubes = []
+    green_cubes = []
+    blue_cubes = []
+    for i in max_bag:
+        print(i)
+        cache_result = cache_result * i
+    result = result + cache_result
+    cache_result = 1
 calibration_document.close()
 print(result)

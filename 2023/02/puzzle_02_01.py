@@ -1,6 +1,7 @@
 import itertools
 import re
 from variables import *
+import time
 
 #VARIABLES#
 highest_number = 0
@@ -28,6 +29,7 @@ def get_ball_amount(p_string, p_list):
     get_ball_position(p_string, p_list)
 
 #START#
+start_time = time.time()
 calibration_document = open(link_to_puzzle_input, "r")
 data = calibration_document.read()
 
@@ -96,4 +98,8 @@ for line in data.split('\n'):
     blue_cubes = 0
     
 calibration_document.close()
+end_time = time.time()
+
+elapsed_time = end_time - start_time
+print(f"Execution time: {elapsed_time:.4f} seconds")
 print(result)

@@ -1,4 +1,7 @@
 from variables import *
+import time
+
+start_time = time.time()
 calibration_document = open(link_to_calibration_document, "r")
 data = calibration_document.read()
 result = 0
@@ -17,3 +20,8 @@ for line in data.split('\n'):
     result = result + int(number)
 print(result)
 calibration_document.close() 
+end_time = time.time()
+
+elapsed_time = end_time - start_time
+print(f"Execution time: {elapsed_time:.4f} seconds")
+print(result)

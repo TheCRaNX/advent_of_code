@@ -1,4 +1,7 @@
 from variables import *
+import time
+
+start_time = time.time()
 help_dict = {'one': '1','two': '2','three': '3','four': '4','five': '5','six': '6','seven': '7','eight': '8','nine': '9','zero': '0'}
 result = 0
 calibration_document = open(link_to_calibration_document, "r")
@@ -20,5 +23,9 @@ for line in data.split('\n'):
     for i in first_last:
         number += '' + str(i)
     result = result + int(number)
-print(result)
 calibration_document.close() 
+end_time = time.time()
+
+elapsed_time = end_time - start_time
+print(f"Execution time: {elapsed_time:.4f} seconds")
+print(result)

@@ -1,7 +1,10 @@
 import linecache
 import re
 from variables import *
+import time
 
+
+start_time = time.time()
 cache_time = []
 cache_recordDistance = []
 time_recordDistance = {}
@@ -36,4 +39,8 @@ for key in time_recordDistance:
         if (remaining_time * int(i)) > int(time_recordDistance[key]):
             cache_result = cache_result + 1
     result = result * cache_result
+end_time = time.time()
+
+elapsed_time = end_time - start_time
+print(f"Execution time: {elapsed_time:.4f} seconds")
 print(result)

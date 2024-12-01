@@ -21,7 +21,7 @@ for (x, y) in zip(left_input, right_input):
     cache = abs(x - y)
     result = result + cache
     
-print(result)
 end_time = time.time()
 execution_time = end_time - start_time
+print(result)
 print("Execution time", execution_time)

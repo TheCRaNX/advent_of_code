@@ -20,7 +20,7 @@ for x in left_input:
         result = result + (x * count)
     
     
-print(result)
 end_time = time.time()
 execution_time = end_time - start_time
+print(result)
 print("Execution time", execution_time)

@@ -1,8 +1,9 @@
 import os
 import time
-from variables import *
 
 start_time = time.time()
+
+puzzle_input = os.getcwd()+ "/2024/01/puzzle_input.txt"
 left_input = []
 right_input = []
 

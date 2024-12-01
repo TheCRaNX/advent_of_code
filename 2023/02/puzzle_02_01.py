@@ -1,6 +1,6 @@
 import itertools
+import os
 import re
-from variables import *
 import time
 
 #VARIABLES#
@@ -30,7 +30,8 @@ def get_ball_amount(p_string, p_list):
 
 #START#
 start_time = time.time()
-calibration_document = open(link_to_puzzle_input, "r")
+puzzle_input = os.getcwd()+ "/2023/02/puzzle_input.txt"
+calibration_document = open(puzzle_input, "r")
 data = calibration_document.read()
 
 for line in data.split('\n'):

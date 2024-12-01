@@ -1,8 +1,8 @@
 import linecache
+import os
 import re
 
-from variables import *
-import re
+test = os.getcwd()+ "/2023/0036/test.txt"
 calibration_document = open(test, "r")
 
 

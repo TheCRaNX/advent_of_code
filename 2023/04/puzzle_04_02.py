@@ -1,8 +1,4 @@
-import linecache
-import re
-
-from variables import *
-import re
+import os
 
 
 def get_line_number(p_line, p_char):
@@ -53,9 +49,11 @@ card_matches = {}
 
 
 #DELETE CONTENT OF COPY.TXT#
+copy_txt = os.getcwd()+ "/2023/04/copy.txt"
 open(copy_txt, 'w').close()
 
 games = 0
+test = os.getcwd()+ "/2023/04/test.txt"
 calibration_document = open(test, "r")
 data = calibration_document.read()
 result = 0

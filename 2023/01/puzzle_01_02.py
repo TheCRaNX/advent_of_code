@@ -1,10 +1,11 @@
-from variables import *
+import os
 import time
 
 start_time = time.time()
+puzzle_input = os.getcwd()+ "/2023/01/puzzle_input.txt"
 help_dict = {'one': '1','two': '2','three': '3','four': '4','five': '5','six': '6','seven': '7','eight': '8','nine': '9','zero': '0'}
 result = 0
-calibration_document = open(link_to_calibration_document, "r")
+calibration_document = open(puzzle_input, "r")
 data = calibration_document.read()
 for line in data.split('\n'):
     cache = []

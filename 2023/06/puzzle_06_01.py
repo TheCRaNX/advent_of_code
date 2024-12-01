@@ -1,15 +1,15 @@
-import linecache
-import re
-from variables import *
+import os
 import time
 
 
 start_time = time.time()
+
+puzzle_input = os.getcwd()+ "/2023/06/puzzle_input.txt"
 cache_time = []
 cache_recordDistance = []
 time_recordDistance = {}
 
-calibration_document = open(link_to_puzzle_input, "r")
+calibration_document = open(puzzle_input, "r")
 data = calibration_document.read()
 line_count = 1
 for line in data.split('\n'):

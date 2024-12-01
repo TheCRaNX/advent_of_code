@@ -1,8 +1,9 @@
-from variables import *
+import os
 import time
 
 start_time = time.time()
-calibration_document = open(link_to_calibration_document, "r")
+puzzle_input = os.getcwd()+ "/2023/01/puzzle_input.txt"
+calibration_document = open(puzzle_input, "r")
 data = calibration_document.read()
 result = 0
 for line in data.split('\n'):

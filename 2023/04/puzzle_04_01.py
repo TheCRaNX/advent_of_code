@@ -1,10 +1,8 @@
 import linecache
-import re
-
-from variables import *
-import re
+import os
 
 
+test = os.getcwd()+ "/2023/04/test.txt"
 def get_line(p_line_number):
     l_line_number = linecache.getline(test, p_line_number)
     return l_line_number
@@ -28,7 +26,8 @@ def calc_and_save_win_amount(p_winning_number):
     p_win_amount = p_winning_number * 2
 
 games = 0
-calibration_document = open(link_to_puzzle_input, "r")
+puzzle_input = os.getcwd()+ "/2023/04/puzzle_input.txt"
+calibration_document = open(puzzle_input, "r")
 data = calibration_document.read()
 result = 0
 for line in data.split('\n'):

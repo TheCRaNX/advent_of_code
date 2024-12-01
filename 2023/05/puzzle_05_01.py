@@ -1,8 +1,5 @@
 import linecache
-import re
-
-from variables import *
-import re
+import os
 
 #VARIABLES#
 def get_line(p_text, p_line_number):
@@ -49,6 +46,7 @@ maps = ["seed-to-soil","soil-to-fertilizer", "fertelizer-to-water", "water-to-li
 
 #START#
 games = 0
+test = os.getcwd()+ "/2023/05/test.txt"
 calibration_document = open(test, "r")
 data = calibration_document.read()
 result = 0

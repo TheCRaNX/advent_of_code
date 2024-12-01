@@ -180,3 +180,7 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+
+# Advent Of Code 2024 #
+2024/01/__pycache__

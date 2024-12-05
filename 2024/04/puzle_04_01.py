@@ -17,13 +17,11 @@ def get_char(p_text, p_x, p_y):
     else:
         return None
     
-def walk(p_data, p_allowed_word, p_x, p_y, p_max_width, p_max_length):
+def walk(p_data, p_allowed_word, p_x, p_y):
     #print("Function: p_allowed_word = ", p_allowed_word, ", p_x = ", p_x, ", p_y = " , p_y, ", p_max_width = ", p_max_width, ", p_max_length = ", p_max_length)
 
     c_x = int(p_x)
     c_y = int(p_y)
-    c_max_width = int(p_max_width)
-    c_max_length = int(p_max_length)
     
         
     count = 0
@@ -86,13 +84,6 @@ try:
     with open(puzzle_input, "r") as document:
         data = document.readlines()
 
-    c_max_width = 0
-    c_max_height = 0
-    for line in data:
-        c_max_height += 1
-        if len(line) > c_max_width:
-            c_max_width = len(line)
-
 
     result = 0
 
@@ -101,7 +92,7 @@ try:
         y += 1
         for x in range(len(line)):
             count = 0
-            count = walk(data, word, x + 1, y, c_max_width, c_max_height)
+            count = walk(data, word, x + 1, y)
             result = result + count
 
 

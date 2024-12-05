@@ -1,13 +1,11 @@
-import os
+import sys
 
-puzzle_input = os.getcwd()+ "/2024/01/puzzle_input.txt"
+data = sys.stdin.read()
 left_input = []
 right_input = []
-
-document = open(puzzle_input, "r")
-data = document.read()
 result = 0
-for line in data.split('\n'):
+
+for line in data.strip().split('\n'):
     left_input.append(int(line[0:5]))
     right_input.append(int(line[8:13]))
 
@@ -20,14 +18,12 @@ for (x, y) in zip(left_input, right_input):
 
 print(result)
 
+
 left_input = []
 right_input = []
-
-document = open(puzzle_input, "r")
-data = document.read()
-
 result = 0
-for line in data.split('\n'):
+
+for line in data.strip().split('\n'):
     left_input.append(int(line[0:5]))
     right_input.append(int(line[8:13]))
 

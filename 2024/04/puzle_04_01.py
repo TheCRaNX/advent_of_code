@@ -17,8 +17,8 @@ def get_char(p_text, p_x, p_y):
     else:
         return None
     
-def walk(p_data, p_allowed_words, p_x, p_y, p_max_width, p_max_length):
-    #print("Function: p_allowed_words = ", p_allowed_words, ", p_x = ", p_x, ", p_y = " , p_y, ", p_max_width = ", p_max_width, ", p_max_length = ", p_max_length)
+def walk(p_data, p_allowed_word, p_x, p_y, p_max_width, p_max_length):
+    #print("Function: p_allowed_word = ", p_allowed_word, ", p_x = ", p_x, ", p_y = " , p_y, ", p_max_width = ", p_max_width, ", p_max_length = ", p_max_length)
 
     c_x = int(p_x)
     c_y = int(p_y)
@@ -28,7 +28,7 @@ def walk(p_data, p_allowed_words, p_x, p_y, p_max_width, p_max_length):
         
     count = 0
     # WALK ALL DIRECTIONS #
-    positions = set()
+    positions = []
     for direction in directions.keys():
         word_cache = ""
         position_cache = []
@@ -42,13 +42,12 @@ def walk(p_data, p_allowed_words, p_x, p_y, p_max_width, p_max_length):
             word_cache = str(word_cache) + str(char)
             position_cache.append((c_x + i[0], c_y + i[1]))
         
-        if word_cache in p_allowed_words:
-
-            if tuple(position_cache) not in positions:
-                print(direction + " in  (x: " + str(c_x) + ", y: " + str(c_y), position_cache)
-                print(word_cache)
-                count += 1
-                positions.add(tuple(position_cache))
+        if word_cache == p_allowed_word:
+            #print(direction + " in  (x: " + str(c_x) + ", y: " + str(c_y), position_cache)
+            #print(word_cache)
+            count += 1
+            positions.append(position_cache)
+                
             
     # END WALK ALL DIRECTIONS #
 
@@ -60,8 +59,8 @@ def walk(p_data, p_allowed_words, p_x, p_y, p_max_width, p_max_length):
 
         
 
-words = ["XMAS"]
-words_length = len(words)
+word = "XMAS"
+word_length = len(word)
 
 
 # x:y
@@ -102,14 +101,13 @@ try:
         y += 1
         for x in range(len(line)):
             count = 0
-            count = walk(data, words, x + 1, y, c_max_width, c_max_height)
+            count = walk(data, word, x + 1, y, c_max_width, c_max_height)
             result = result + count
 
 
 
     end_time = time.time()
     execution_time = end_time - start_time
-    print(c_max_width, c_max_height)
     print(result)
     print("Execution time", execution_time)
 
